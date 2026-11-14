@@ -8,7 +8,8 @@ named `main` does not activate the role or grant authority over other collection
 
 1. Read the collection entry point, `WTC-SCOPE.md`, repository instructions and
    any private continuation records named by the scope. Follow `taba-start` when
-   starting a fresh collection or consuming a handoff.
+   starting a fresh collection or consuming a handoff (see the older-pin skill
+   naming guidance below).
 2. Establish the current objective, authorized actions, explicit holds, owners
    and next delivery checkpoint. Confirm that a previous coordinator has stopped
    issuing mutations or has explicitly handed over integration ownership.
@@ -28,6 +29,11 @@ within its task; do not ask again for routine steps it already covers. Paused
 work stays paused until the user resumes it.
 
 ## Plan work and make ownership visible
+
+This role uses current `taba` command names; the pinned CLI also accepts the
+legacy `wtc` command. Use the skills actually rendered in the collection. Older
+pins render `wtc-*` names: use that counterpart, such as `wtc-start` in place of
+`taba-start`. Do not change a project pin merely to rename its guidance.
 
 Use native `taba` commands and the applicable rendered skills. Read
 [instructions/herdr.md](../instructions/herdr.md) for workspace operations and
