@@ -1,5 +1,5 @@
-# Repo registry for the wtc-dogfood workspace — the worktree-collection
-# workspace in which wtc-agent-harness hosts itself.
+# Repo registry for the taba project's own workspace, in which this harness
+# (taba-taba-project, formerly wtc-agent-harness) hosts itself.
 #
 # Tracked and authoritative. The generated local counterpart mapping each name
 # to its bare owner on this machine is `.harness-repos`, written by
@@ -7,7 +7,8 @@
 #
 # Parsed by the CLI, so the shape is load-bearing:
 #   * a repo block starts with a `- name: <repo>` line
-#   * every other field is `<key>: <value>` — one scalar, no inline comments
+#   * every other field is `<key>: <value>` — one scalar, no inline comments;
+#     only `aliases` takes a list, written inline as `[old-a, old-b]`
 #
 # Fields:
 #   remote         clone URL for the bare owner (always the forge, never a
@@ -19,6 +20,10 @@
 #   issues_prefix  only for repos with an in-repo issue tracker. This
 #                  workspace tracks issues on GitHub, so no repo sets one.
 #   role           one line, for humans reading this file
+#   aliases        earlier names of a renamed repository. Existing folders,
+#                  bare owners, ports (<OLD>_PORT), enlistments and secrets
+#                  under an old name keep working. Remove one only when no
+#                  collection uses it any more.
 
 schema_version: 1
 
