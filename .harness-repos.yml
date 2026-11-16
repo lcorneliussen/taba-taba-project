@@ -24,14 +24,17 @@ schema_version: 1
 
 repositories:
   # This harness. Its worktree is always the collection's `harness/` dir.
-  - name: wtc-agent-harness
-    remote: git@github.com:lcorneliussen/wtc-agent-harness.git
+  - name: taba-taba-project
+    aliases: [wtc-agent-harness]
+    remote: git@github.com:lcorneliussen/taba-taba-project.git
     default_ref: origin/main
     role: Dogfood harness — instructions, registry, collection tools.
 
   # The official Worktree Collections site. Serves HTTP once it has a stack,
-  # so it takes the first port offset: WTC_SITE_PORT = base + 1.
-  - name: wtc-site
+  # so it takes the first port offset: TABA_SITE_PORT = base + 1 (also
+  # emitted as WTC_SITE_PORT for its old name).
+  - name: taba-site
+    aliases: [wtc-site]
     remote: git@github.com:lcorneliussen/taba-site.git
     default_ref: origin/main
     port_offset: 1
@@ -39,7 +42,8 @@ repositories:
 
   # The wtc CLI and its OpenClaw plugin: the product the site describes. Its
   # docs/ are the source of truth for commands and behaviour.
-  - name: wtc-cli
+  - name: taba
+    aliases: [wtc-cli]
     remote: git@github.com:lcorneliussen/taba.git
     default_ref: origin/main
     role: The wtc CLI and OpenClaw plugin — what the site describes; its docs/ are the source of truth.
@@ -53,9 +57,11 @@ repositories:
 
   # Public derived work of clawfather-boilerplate, run locally with Docker
   # Compose. The test bed for the boilerplate and for wtc integration. Serves
-  # the gateway locally: WTC_CLAW_PORT = base + 2.
-  - name: wtc-claw
-    remote: git@github.com:lcorneliussen/wtc-claw.git
+  # the gateway locally: TABA_CLAW_PORT = base + 2 (also emitted as
+  # WTC_CLAW_PORT for its old name).
+  - name: taba-claw
+    aliases: [wtc-claw]
+    remote: git@github.com:lcorneliussen/taba-claw.git
     default_ref: origin/main
     port_offset: 2
     role: Docker Compose claw derived from clawfather-boilerplate, public — the OpenClaw gateway for working on wtc, run locally (bin/claw deploy); test bed and wtc integration.
