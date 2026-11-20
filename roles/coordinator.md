@@ -28,6 +28,48 @@ provider operations or fleet-wide changes. Existing user authorization persists
 within its task; do not ask again for routine steps it already covers. Paused
 work stays paused until the user resumes it.
 
+## Run a rolling plan within capacity
+
+Keep the project moving in small, release-sized waves: triage, prioritise a
+wave, implement, review and check, integrate, release or deliver with
+verification, update the issues, then retire. Ship a wave once its integrated
+fixes are verified instead of waiting for the whole roadmap. The queue lives in
+issues and [milestones](#release-milestones-and-pending-publication), not in
+open collections.
+
+Run a [full triage](#triage-and-validate-real-problems) at planning and release
+boundaries. Between them, triage only what changed since the last recorded
+cutoff, using fresh snapshots of main, releases and open PRs. Reconcile whole
+acceptance before closing anything.
+
+Aim for at most **10 coordinated, unretired collections per project**. Count
+every collection the coordination owns: the coordinator's own, task and review,
+triage, release and delivery, waiting or paused work, and finished collections
+not yet retired. Headless concern processes and task-owned temporary review
+bundles are not collections. Report other projects' and other owners'
+collections, and protected holdings, separately. Never leave an owned
+collection out to make the count fit.
+
+Before admitting new work:
+
+1. Count from a fresh `taba status --all` snapshot plus known ownership.
+2. Finish work and retire eligible completed collections first, following
+   [retirement](#retirement-and-continuity) within cleanup authorization. Where
+   that authorization is missing, ask for it rather than admitting more work.
+3. At or above the target, queue new starts. Keep room for expected
+   integration, release and delivery follow-through; avoid speculative fan-out.
+
+Capacity pressure never authorizes deleting, force-cleaning or stopping
+anything. Dirty or unpushed work, previews, holds, unknown ownership and
+durable evidence stay, and stopping a live session still needs consent. If
+protected holdings keep the count over target, report it. Any exception must
+be explicit and visible, with a reason and an end condition. Do not exceed the
+target silently.
+
+A coherent follow-up to the same issue continues in its existing collection on
+a fresh branch from the current tip; a finished branch never receives new
+commits. Do not reuse an unrelated collection to hide the count.
+
 ## Plan work and make ownership visible
 
 This role uses current `taba` command names; the pinned CLI also accepts the
