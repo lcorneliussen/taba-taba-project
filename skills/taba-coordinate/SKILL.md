@@ -18,10 +18,9 @@ agent-agnostic role contract; this skill is its entry point, not a second runboo
 4. Keep scopes and reservations current, carry authorized work through its
    delivery checks, and maintain one concise durable continuation checkpoint.
 5. Stop an item at verified completion or its actual authorization/dependency
-   boundary, and keep other independent work moving. A standing mandate in the
-   scope continues after a wave. If orientation finds no unfinished objective
-   or mandate, report that before proposing the next work. The role itself
-   grants no merge, release or cleanup authority.
+   boundary; the role defines when a standing mandate continues. If orientation
+   finds no unfinished objective or mandate, report that before proposing the
+   next work. The role itself grants no merge, release or cleanup authority.
 
 If this client does not discover skills, read the same role directly through
 `harness/collection-AGENTS.md`; no client-specific configuration is required.
