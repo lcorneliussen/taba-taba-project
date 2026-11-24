@@ -240,7 +240,9 @@ Record who selected a target milestone, which is not necessarily who wrote the
 issue, with exactly one controlled label when known: `planning:human` or
 `planning:coordinator`. Leave an unknown origin unlabelled instead of guessing.
 A human-selected target keeps its priority; never present a coordinator choice
-as a human commitment.
+as a human commitment. If the project lacks these labels, record the origin in
+the planning comment and ask for authorization to create them; do not
+substitute other labels.
 
 - Only when the scope records delegated milestone and label organization for
   the project, the coordinator may set a proposed target and label it
@@ -255,9 +257,10 @@ as a human commitment.
   write. Do not overwrite a human or concurrent change; reconcile it instead.
 - Keep planning text generic and public-safe.
 
-- Assign a version milestone when work is accepted for that release. If only
-  part of an umbrella issue will ship, milestone the bounded PR or a scoped
-  follow-up issue instead of promising the whole umbrella.
+- Assign a version milestone when a human accepts work for that release, or
+  propose one under recorded delegation as above. If only part of an umbrella
+  issue will ship, milestone the bounded PR or a scoped follow-up issue instead
+  of promising the whole umbrella.
 - Apply `status:awaiting-release` only when the entire issue is verified fixed
   on the actual development tip and publication is the only remaining gate.
   Use non-closing references (such as `Refs #<n>`) where a merge would close
@@ -267,11 +270,12 @@ as a human commitment.
   open with their remaining scope. Do not reopen already closed issues merely
   for bookkeeping.
 
-Finish this aftermath as part of an authorized release, without a new request.
-Accept the exact published artifacts, the exact main build and any required
-deployment first, then reconcile each linked issue's full acceptance. Close an
-issue only when every requirement is satisfied; on a partial, remove the
-pending label and state the outstanding requirement in the issue.
+When the scope delegates release aftermath, finish it as part of an authorized
+release without a new request; otherwise prepare it and ask. Accept the exact
+published artifacts, the exact main build and any required deployment first,
+then reconcile each linked issue's full acceptance. Close an issue only when
+every requirement is satisfied; on a partial, remove the pending label and state
+the outstanding requirement in the issue.
 
 ## Retirement and continuity
 
