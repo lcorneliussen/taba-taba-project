@@ -68,9 +68,11 @@ Before admitting new work:
 2. Finish work and retire eligible completed collections first, following
    [retirement](#retirement-and-continuity) within cleanup authorization. Where
    that authorization is missing, ask for it rather than admitting more work.
-3. Below the target, admit the next prioritized independent work whose files,
-   dependencies and owners do not overlap live work. At or above it, queue new
-   starts and avoid speculative fan-out.
+3. Below the target, admit the next prioritized independent work that has no
+   unresolved reservation, ownership or dependency conflict with live work.
+   Shared files with explicitly cleared independent hunks do not block
+   admission (see ownership below). At or above the target, queue new starts
+   and avoid speculative fan-out.
 
 Do not hold a permanent, arbitrary reserve of empty slots. A reserved slot needs
 a named imminent task (such as a release or delivery follow-up), the trigger that
@@ -248,17 +250,24 @@ substitute other labels.
   the project, the coordinator may set a proposed target and label it
   `planning:coordinator`. A milestone never grants merge, tag or release
   authority.
-- When provenance or approval needs more detail, keep one editable planning
-  comment per issue, bound to the exact target and scope. It records the origin
-  (`human`, `coordinator` or `unknown`) and the decision (`proposed`,
-  `accepted`, `deferred` or `declined`). Human acceptance updates the decision
-  but does not erase that the coordinator proposed it.
-- Re-read current milestone, labels and planning comment immediately before a
-  write. Do not overwrite a human or concurrent change; reconcile it instead.
+- Whenever the coordinator assigns or changes a target, it keeps exactly one
+  editable planning comment on the item, bound to the exact target and scope.
+  The comment records the origin (`human`, `coordinator` or `unknown`) and the
+  decision (`proposed`, `accepted`, `deferred` or `declined`). A coordinator
+  assignment starts as `proposed`; only a human decision sets `accepted`. The
+  label alone does not distinguish a proposal from an accepted target.
+- Human acceptance updates the decision but never rewrites the origin. When
+  the target or scope changes, update the comment and reset the decision to
+  `proposed` unless a human chose the new target.
+- Do not replace an existing target whose origin is unknown; record it as
+  `unknown` and ask. Re-read current milestone, labels and planning comment
+  immediately before a write. Do not overwrite a human or concurrent change;
+  reconcile it instead.
 - Keep planning text generic and public-safe.
 
 - Assign a version milestone when a human accepts work for that release, or
-  propose one under recorded delegation as above. If only part of an umbrella
+  assign it as a tentative `proposed` target under recorded delegation as above;
+  it counts as accepted only after a human decision. If only part of an umbrella
   issue will ship, milestone the bounded PR or a scoped follow-up issue instead
   of promising the whole umbrella.
 - Apply `status:awaiting-release` only when the entire issue is verified fixed
